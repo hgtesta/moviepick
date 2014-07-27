@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140727145536) do
+ActiveRecord::Schema.define(version: 20140727222005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20140727145536) do
     t.decimal "rating"
     t.integer "votes"
     t.string  "votes_distribution"
+    t.integer "year"
+    t.integer "year_part"
   end
 
 end
