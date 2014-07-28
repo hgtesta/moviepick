@@ -1,0 +1,4 @@
+.movies { color:#fff; }
+  .movies .movie { float:left; padding:10px }
+.picked { height:140px; }
+  .picked .explanation { font-size:65px; text-align:center; padding:20px; color:#000; }
