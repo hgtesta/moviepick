@@ -1,7 +1,9 @@
 <section class="picks">
   <div class="movies">
     <% @picked_movies.each do |movie| %>
-      <%= render movie %>
+      <%= link_to pick_path(movie.id), method: :delete do %>
+        <%= render movie %>
+      <% end %>
     <% end %>
   </div>
   <div class="explanation">

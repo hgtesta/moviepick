@@ -1,9 +1,7 @@
 class PicksController < ApplicationController
 
   def index
-    @movies = Movie.order("RANDOM()").where("votes > 10000").limit(20)
-    # session[:picks] ||= []
-    # @picks = session[:picks]
+    @movies = Movie.order("RANDOM()").where("votes > 10000").limit(10)
     @picked_movies = Movie.find(session[:picks] || [])
   end
 
@@ -21,6 +19,19 @@ class PicksController < ApplicationController
     end
 
     redirect_to :picks
+  end
+
+  def destroy
+    session[:picks].delete(params[:id])
+
+    # Save picks if user is logged in
+    if @user = current_user
+      @user.movies.delete(@movie_id)
+      @user.save!
+    end
+
+    redirect_to :picks
+
   end
 
 end
