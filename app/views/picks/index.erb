@@ -1,0 +1,17 @@
+<section class="picks">
+  <div class="movies">
+    <% @picked_movies.each do |movie| %>
+      <%= render movie %>
+    <% end %>
+  </div>
+  <div class="explanation">
+    Pick a movie you like!
+  </div>
+</section>
+<section class="movies">
+  <% @movies.each do |movie| %>
+    <%= link_to picks_path(movie_id: movie.id), method: :post do %>
+      <%= render movie %>
+    <% end %>
+  <% end %>
+</section>

@@ -1,4 +1,6 @@
-.movies { color:#fff; }
+.picks { min-height:140px; }
+  .picks .explanation { font-size:65px; text-align:center; padding:20px; color:#000; }
+.movies { color:#fff; display:inline-block; }
   .movies .movie { float:left; padding:10px }
-.picked { height:140px; }
-  .picked .explanation { font-size:65px; text-align:center; padding:20px; color:#000; }
+    .movies a { color:#fff }
+    .movies a:hover { color:#FDE330 }
