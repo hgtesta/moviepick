@@ -5,8 +5,10 @@
 </section>
 <section class="movies">
   <% @movies.each do |movie| %>
-    <div class="movie">
-      <%= movie.title %> (<%= movie.year %>)
-    </div>
+    <%= link_to movie do %>
+      <div class="movie">
+        <%= movie.title %> (<%= movie.year %>)
+      </div>
+    <% end %>
   <% end %>
 </section>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140727222005) do
+ActiveRecord::Schema.define(version: 20140728140803) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,28 @@ ActiveRecord::Schema.define(version: 20140727222005) do
     t.string  "votes_distribution"
     t.integer "year"
     t.integer "year_part"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "username",                           null: false
+    t.string   "auth_token"
+    t.boolean  "admin"
+    t.boolean  "deleted",            default: false, null: false
+    t.string   "confirmation_code"
+    t.datetime "confirmed_at"
+    t.string   "password_digest"
+    t.boolean  "enabled",            default: false, null: false
+    t.integer  "login_count",        default: 0,     null: false
+    t.integer  "failed_login_count", default: 0,     null: false
+    t.datetime "last_request_at"
+    t.datetime "current_login_at"
+    t.datetime "last_login_at"
+    t.string   "current_login_ip"
+    t.string   "last_login_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

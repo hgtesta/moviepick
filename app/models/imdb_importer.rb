@@ -8,6 +8,8 @@
 #
 class IMDBImporter
 
+  PARTS = { "I" => 1, "II" => 2, "III" => 3, "IV" => 4, "V" => 5, "VI" => 6 }
+
   def self.import
 
     File.open "#{Rails.root}/data/ratings.list", "r", encoding: "Windows-1252" do |file|
@@ -42,7 +44,7 @@ class IMDBImporter
                         rating: matches[:rating],
                         votes_distribution: matches[:distribution],
                         year: matches[:year],
-                        year_part: matches[:yearpart].try(:size)
+                        year_part: PARTS[matches[:yearpart]]
         end
       end
 
