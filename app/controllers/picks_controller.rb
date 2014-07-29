@@ -3,6 +3,8 @@ class PicksController < ApplicationController
   def index
     @movies = Movie.order("RANDOM()").where("votes > 10000").limit(10)
     @picked_movies = Movie.find(session[:picks] || [])
+    download_posters @movies
+    download_posters @picked_movies
   end
 
   def create
@@ -32,6 +34,18 @@ class PicksController < ApplicationController
 
     redirect_to :picks
 
+  end
+
+  private 
+
+  def download_posters(list)
+    list.each do |movie|
+      td = ThumbnailDownloader.new
+      unless movie.poster
+        movie.poster = td.download(movie) || "no-poster.jpg"
+        movie.save
+      end
+    end
   end
 
 end
